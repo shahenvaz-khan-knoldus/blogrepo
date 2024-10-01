@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devops Next</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        header {
+            padding: 12px 20px;
+            text-align: center;
+            display: flex;
+            position: fixed;
+            top: 0; /* Ensure it's fixed at the top */
+            left: 0; /* Align it to the left */
+            right: 0; /* Stretch to the right edge */
+            align-items: center;
+            justify-content: space-between;
+            background-image: linear-gradient(to right, #6B21B9, #991b1b);
+            height: 60px; /* Define the height of the header */
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+        #pdf{
+            text-align: center;
+            display: flex;
+            position: fixed;
+            top: 60px; /* Ensure it's fixed at the top */
+            left: 57%; /* Align it to the left */
+            right: 0; /* Stretch to the right edge */
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            width: 120px;
+            padding: 10px 10px;
+            border-radius: 10px;
+            display: none;
+            border:1px solid rgba(0, 0, 0, 0.646);
+            z-index: 1000; /* Ensure it stays above other content */
+            cursor: pointer;
+
+        }
+        #pdf:hover{
+            background-color: #1a0b3216;
+            border: 1px solid white;
+        }
+        #pdf:hover a{
+            color: white;
+        }
+        #pdf a {
+            text-decoration: none;
+            color: black;
+        }
+
+        header:hover {
+            background-image: linear-gradient(to right, #fff, #fff);
+            color: black;
+        }
+
+        header:hover nav a {
+            color: black;
+        }
+
+        header:hover #button {
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-left: 13%
+        }
+
+        nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+
+        }
+
+        header:hover nav a:hover {
+            background-image: linear-gradient(to right, #6B21B9, #991b1b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .container {
+            height: 50%;
+            padding-left: 5rem;
+            padding-right: 5rem;
+            padding-top: 200px;
+            padding-bottom: 30px;
+            margin: 0;
+            background-image: linear-gradient(to right, #6B21B9, #991b1b);
+        }
+
+        .container h1 {
+            font-size: 8rem;
+            color: white;
+            font-weight: 700;
+            line-height: 1;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            text-align: left;
+            margin-top: 0;
+            width: 60%;
+        }
+
+        .container p {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            /* lg */
+            color: white;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+            margin-top: -3.25rem;
+            font-weight: 420;
+            /* Resetting margin-top */
+        }
+
+        .why {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding: 1.25rem;
+        }
+
+        .why1 {
+            margin: 60px;
+            display: flex;
+            padding-top: 0;
+            flex-direction: row;
+            box-shadow:
+                -5px 0 5px -5px rgba(0, 0, 0, 0.1),
+                5px 0 5px -5px rgba(0, 0, 0, 0.1),
+                0 10px 5px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            padding: 30px;
+        }
+
+        .card p {
+            margin: 1rem;
+            line-height: 25px;
+            word-spacing: 1px;
+        }
+
+        .imagecard {
+            margin: auto;
+            padding: 50px;
+        }
+
+        .imagecard img {
+            width: 700px;
+            height: 350px;
+        }
+
+        .ppt-viewer {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border: 1px solid #ccc;
+            margin: 20px auto;
+            /* Center the viewer horizontally */
+        }
+
+        .controls {
+            margin: 20px 0;
+        }
+
+        .controls button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .controls button:hover {
+            background-color: #555;
+        }
+
+        footer {
+            background-image: linear-gradient(284.04deg, #200E3D 0%, #60166C 25.33%, #4E2A8C 52.07%, #1A0B32 100%);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .logo {
+            width: 80px;
+            /* Adjust the width as needed */
+            height: auto;
+            margin-left: 20px;
+            /* Adjust margin for spacing */
+        }
+
+        .button {
+            background-color: red;
+            font-weight: 400;
+            margin-left: 200px;
+        }
+
+        #button:hover {
+            background-image: linear-gradient(to right, #6B21B9, #991b1b);
+            background-clip: unset;
+            color: white;
+        }
+
+        .a:hover {
+            background-color: white;
+        }
+    </style>
+    <script>
+        function showPdf(){
+            if(document.getElementById("pdf").style.display=="block")
+            document.getElementById("pdf").style.display="none";
+        else
+        document.getElementById("pdf").style.display="block";
+        }
+    </script>
+</head>
+
+<body>
+    <header class="a">
+        <nav>
+            <a href="#what">What</a>
+            <a href="#why">Why</a>
+            <a href="#Characteristics">Characteristics</a>
+            <a href="#Benefits">Benefits</a>
+            <a href="#NoOps">NoOps Vs DevOps</a>
+            <a href="#demo">DEMO</a>
+            <a href="javascript:void(0)" onclick="showPdf()">NoOPS REFERENCE</a>
+                
+            <!-- <a href="/">Home</a> -->
+            <a href="https://www.nashtechglobal.com/about-us" target="_blank">About</a>
+            
+            <a href="https://www.nashtechglobal.com/#contact-us-form" class="button" id="button">Contact</a>
+        </nav>
+    </header>
+    <div id="pdf">
+        <a href="./pdf/noops.pdf">NoOps Guide</a>
+    </div>
+    <div class="container">
+        <img src="./logo/logo.png" alt="Logo" class="logo"
+            style="height: 110px; width: 110px;margin-left: -10px; margin-top: -1000px;">
+        <div style="padding-top: 20px;">
+            <h1>Understanding NoOps​</h1>
+            <p>The Future of Operations in the DevOps Era</p>
+        </div>
+    </div>
+    <div class="why" id="what">
+        <div class="why1">
+            <div class="card">
+                <h1>NoOps​</h1>
+                <p>
+                    NoOps, short for "No Operations," is an approach where traditional operational tasks are automated
+                    to the point where they require minimal human intervention. The goal of NoOps is to eliminate manual
+                    processes and reduce the need for dedicated operations teams by leveraging advanced automation and
+                    cloud technologies.
+
+                    In essence, NoOps aims to create an environment where the infrastructure and operations are managed
+                    by automation tools, enabling development teams to focus more on coding and delivering features
+                    rather than managing and maintaining systems.
+                </p>
+            </div>
+            <div class="imagecard">
+                <img src="./image/pic1.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="why" id="why">
+        <div class="why1">
+            <div class="imagecard">
+                <img src="./image/pic2.png" alt="">
+            </div>
+            <div class="card">
+                <h1>Why NoOps ​
+                    ​</h1>
+                <p>The emergence of NoOps (No Operations) is driven by the need for greater efficiency, agility, and innovation in the IT landscape. As organizations increasingly adopt cloud technologies and automation, the traditional model of operations is evolving.​</p>
+                <p>
+                    NoOps minimizes the need for manual intervention in operational tasks, streamlining processes such as deployment, monitoring, and scaling. This shift not only accelerates the development lifecycle, enabling faster time-to-market for new features, but also reduces operational costs by decreasing the reliance on extensive operations teams and infrastructure management. 
+
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="why" id="Characteristics">
+        <div class="why1">
+            <div class="card">
+                <h1>Key Characteristics of NoOps​</h1>
+                <p>
+                    NoOps is characterized by several key features that collectively streamline IT operations and enhance efficiency. At its core, NoOps relies on full automation to manage routine tasks such as deployment, monitoring, scaling, and backups, significantly reducing the need for manual intervention and ensuring greater consistency and reliability. It leverages cloud-native technologies, including serverless computing and managed services, which abstract away the complexities of underlying infrastructure management, allowing teams to focus on higher-level functions. Integration with Continuous Integration and Continuous Deployment (CI/CD) pipelines is another crucial aspect of NoOps, as it automates the processes of building, testing, and deploying code changes, thereby streamlining the development lifecycle. Additionally, NoOps environments are designed with self-healing capabilities, enabling systems to automatically detect and recover from failures without human oversight, further enhancing operational resilience and reliability.
+                </p>
+            </div>
+            <div class="imagecard">
+                <img src="/image/pic3.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="why" id="Benefits">
+        <div class="why1">
+            <div class="card">
+
+                <img width="1600" height="700" src="./image/pic6.png"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="why" id="NoOps">
+        <div class="why1" style="display: block;">
+            <div class="card">
+                <h1>NoOps vs. DevOps​</h1>
+                <p>
+                    While NoOps and DevOps share the goal of improving operational efficiency, they differ in their approach. DevOps emphasizes collaboration between development and operations teams to streamline processes, whereas NoOps focuses on automating operations to the extent that it minimizes the need for manual intervention.
+
+                    In a DevOps environment, operations teams play a crucial role in managing and maintaining systems, whereas in a NoOps model, many of these responsibilities are automated, leading to a more streamlined and hands-off approach.
+                </p>
+            </div>
+                <img src="./image/pic7.png" width="1600" height="700">
+        </div>
+    </div>
+
+    <div class="why" id="genaidisruption">
+        <div class="why1">
+            <div class="imagecard">
+                <img src="./image/pic5.png" alt="" style="height: 500px;">
+            </div>
+            <div class="card">
+                <h1>From Manual Management to Automated Efficiency ​
+                    ​</h1>
+                <p> In traditional operations (Ops), deploying and managing applications typically involves considerable manual intervention. For instance, deploying a web application on a traditional server might require writing detailed shell scripts to install necessary software, clone repositories, configure server settings, and manage application environments. This approach often entails manually setting up and configuring servers, load balancers, and security groups, which can be time-consuming and prone to human error. The maintenance and scaling of these resources also require ongoing manual oversight and adjustments.​</p>
+                <p>
+                    In contrast, the NoOps approach leverages automation and serverless technologies to streamline operations. For example, deploying a serverless web application with AWS Lambda involves writing infrastructure-as-code (IaC) configurations using tools like Terraform. This setup automates the provisioning of resources, eliminating the need for manual server management. The Lambda function is deployed without worrying about the underlying infrastructure, and scaling is automatically handled by the serverless platform. The deployment process becomes more efficient and error-resistant as Terraform and serverless architectures manage infrastructure and application environments programmatically, allowing teams to focus more on development and innovation rather than operational tasks.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="why" id="demo">
+        <div class="why1">
+            <div class="card">
+
+                <img width="1600" height="700" src="./image/pic4.png"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="why" id="demo">
+        <div class="why1">
+            <div class="card">
+                <h1>DEMO ​
+                    ​</h1>
+
+                <iframe width="1600" height="700" src="https://www.youtube.com/embed/oaFHz90jBik?si=F9cuznfUFXBi9YHV"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
