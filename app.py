@@ -11,10 +11,6 @@ import os
 app = flask.Flask(__name__,static_url_path='', 
             static_folder='static',)
 
-
-login_manager = flask_login.LoginManager()
-login_manager.init_app(app)
-
 logger = logging.getLogger('werkzeug')
 # Configure the logger
 logging.basicConfig(format='%(asctime)s %(message)s')
