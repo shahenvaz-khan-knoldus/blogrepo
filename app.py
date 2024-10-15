@@ -18,12 +18,12 @@ logging.basicConfig(format='%(asctime)s %(message)s')
 
 @app.errorhandler(404)
 def page_not_found(e):
-    logger.warning(f"The requested route {request.path} is not found")
+    app.logger.info(f"The requested route {request.path} is not found")
     return "Sorry the request page is not found", 404
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    logger.info(f'- Going to make GET request on {request.path} path')
+    app.logger.info(f'- Going to make GET request on {request.path} path')
     if flask.request.method == 'GET':
         return render_template('slides.html')
 
